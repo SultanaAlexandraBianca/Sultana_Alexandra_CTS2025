@@ -1,28 +1,24 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-package builder;
-import builder.PTBuilder;
-import builder.PachetTransport;
-
-
 public class Main {
     public static void main(String[] args) {
-        PachetTransport pachet1= new PTBuilder()
-                .areWifi()
-                .areAerConditionat()
+        // B.1
+        Supa supa = SupaFactory.createSupa(TipSupa.CIUPERCI);
+        supa.descriere();
+
+        // B.2
+        Rezervare rezervare = new Rezervare.Builder()
+                .asezareLaGeam(true)
+                .scauneErgonomice(true)
+                .muzicaAmbientala(true, "Jazz")
                 .build();
+        rezervare.afiseaza();
 
+        // B.3
+        FelDeMancareFactory meniu = new MeniuLegumeFactory();
+        meniu.createSupa().descriere();
+        meniu.createDesert().descriere();
 
-        PachetTransport pachet2= new PTBuilder()
-                .areWifi()
-                .areLocdejoaca()
-                .build();
-
-
-        System.out.println("Pachet 1:");
-        pachet1.AfiseazaDetalii();
-        System.out.println(" Pachet 2:");
-        pachet2.AfiseazaDetalii();
-        }
-
+        // B.4
+        Client client = Client.getInstance("Andreea");
+        client.afiseaza();
+    }
 }
